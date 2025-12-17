@@ -175,10 +175,10 @@ export default function TeacherPage() {
         record.attendance.status === 'in'
           ? 'present'
           : record.attendance.status === 'late'
-          ? 'late'
-          : record.attendance.status === 'in_review'
-          ? 'in_review'
-          : 'absent';
+            ? 'late'
+            : record.attendance.status === 'in_review'
+              ? 'in_review'
+              : 'absent';
 
       if (filterStatus !== 'all' && status !== filterStatus) return false;
 
@@ -211,7 +211,7 @@ export default function TeacherPage() {
 
   const verifyAttendance = async (attendanceId: string, newStatus: 'in' | 'late' | 'out') => {
     if (!token) return;
-    
+
     try {
       const res = await fetch('/api/attendance/verify', {
         method: 'PATCH',
@@ -387,9 +387,8 @@ function SidebarLink({ label, icon, active, onClick }: SidebarLinkProps) {
     <button
       type="button"
       onClick={onClick}
-      className={`flex w-full items-center gap-4 rounded-full px-5 py-3 ${
-        active ? 'bg-emerald-600 text-white' : 'text-emerald-50 hover:bg-emerald-700/80'
-      }`}
+      className={`flex w-full items-center gap-4 rounded-full px-5 py-3 ${active ? 'bg-emerald-600 text-white' : 'text-emerald-50 hover:bg-emerald-700/80'
+        }`}
     >
       <span className="text-2xl">{icon}</span>
       <span className="text-base font-semibold">{label}</span>
@@ -453,7 +452,9 @@ function DashboardTab({
           <div className="flex flex-1 items-end gap-2">
             {(['present', 'late', 'absent', 'in_review'] as const).map((key) => {
               if (key === 'in_review' && summary.inReview === 0) return null;
-              const value = summary[key];
+              // Map the key to the correct property name in summary
+              const summaryKey = key === 'in_review' ? 'inReview' : key;
+              const value = summary[summaryKey as keyof typeof summary];
               const max = Math.max(summary.present, summary.late, summary.absent, summary.inReview, 1);
               const height = (value / max) * 100;
               const colors: Record<string, string> = {
@@ -601,11 +602,10 @@ function AttendanceTab({
                 onClick={() =>
                   setFilterStatus(status as 'all' | 'present' | 'absent' | 'late' | 'in_review')
                 }
-                className={`rounded-full px-3 py-1 font-semibold ${
-                  filterStatus === status
+                className={`rounded-full px-3 py-1 font-semibold ${filterStatus === status
                     ? 'bg-emerald-700 text-white'
                     : 'bg-emerald-50 text-emerald-800'
-                }`}
+                  }`}
               >
                 {status === 'all'
                   ? 'Default'
@@ -653,18 +653,18 @@ function AttendanceTab({
                 r.attendance.status === 'in'
                   ? 'PRESENT'
                   : r.attendance.status === 'late'
-                  ? 'LATE'
-                  : r.attendance.status === 'in_review'
-                  ? 'IN REVIEW'
-                  : 'ABSENT';
+                    ? 'LATE'
+                    : r.attendance.status === 'in_review'
+                      ? 'IN REVIEW'
+                      : 'ABSENT';
               const colorClasses =
                 status === 'PRESENT'
                   ? 'bg-emerald-600 text-white'
                   : status === 'LATE'
-                  ? 'bg-yellow-400 text-emerald-900'
-                  : status === 'IN REVIEW'
-                  ? 'bg-orange-500 text-white'
-                  : 'bg-red-500 text-white';
+                    ? 'bg-yellow-400 text-emerald-900'
+                    : status === 'IN REVIEW'
+                      ? 'bg-orange-500 text-white'
+                      : 'bg-red-500 text-white';
 
               const hasLocation = r.attendance.latitude !== null && r.attendance.longitude !== null;
               const lat = r.attendance.latitude ? (r.attendance.latitude / 1e6).toFixed(6) : null;
@@ -687,9 +687,9 @@ function AttendanceTab({
                   <div className="text-center text-emerald-800">
                     {r.attendance.scannedAt
                       ? new Date(r.attendance.scannedAt).toLocaleTimeString(
-                          undefined,
-                          { hour: '2-digit', minute: '2-digit' }
-                        )
+                        undefined,
+                        { hour: '2-digit', minute: '2-digit' }
+                      )
                       : '--'}
                   </div>
                   <div className="flex justify-center">
@@ -856,7 +856,7 @@ function QrTab({
               <p className="font-semibold">
                 {selectedPeriod
                   ? periods.find((p) => p.id === selectedPeriod)?.name ??
-                    'Select a class'
+                  'Select a class'
                   : 'Select a class'}
               </p>
               <p className="text-base text-emerald-600">
