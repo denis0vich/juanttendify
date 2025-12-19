@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { LayoutDashboard, Users, ClipboardList, Clock, Smartphone, LogOut } from 'lucide-react';
 
 type User = {
   id: string;
@@ -316,9 +317,14 @@ export default function SuperAdminPage() {
         {/* Sidebar */}
         <aside className="flex w-72 flex-col bg-emerald-800/95 px-6 py-8 text-emerald-50">
           <div className="mb-10 flex items-center gap-4">
-            <span className="inline-flex h-14 w-14 items-center justify-center rounded-lg bg-emerald-500 text-xl font-bold text-white shadow-sm">
-              🔐
-            </span>
+            <Image
+              src="/Logo.png"
+              alt="Juanttendify Logo"
+              width={56}
+              height={56}
+              className="object-contain"
+              unoptimized
+            />
             <div>
               <span className="text-base font-semibold">Juanttendify</span>
               <p className="text-xs text-emerald-200">Super Admin</p>
@@ -328,31 +334,31 @@ export default function SuperAdminPage() {
           <nav className="space-y-3 text-base font-semibold">
             <SidebarLink
               label="Dashboard"
-              icon="📊"
+              icon={<LayoutDashboard className="w-5 h-5" />}
               active={tab === 'dashboard'}
               onClick={() => setTab('dashboard')}
             />
             <SidebarLink
               label="Users"
-              icon="👥"
+              icon={<Users className="w-5 h-5" />}
               active={tab === 'users'}
               onClick={() => setTab('users')}
             />
             <SidebarLink
               label="Attendance"
-              icon="📝"
+              icon={<ClipboardList className="w-5 h-5" />}
               active={tab === 'attendance'}
               onClick={() => setTab('attendance')}
             />
             <SidebarLink
               label="Periods"
-              icon="🕐"
+              icon={<Clock className="w-5 h-5" />}
               active={tab === 'periods'}
               onClick={() => setTab('periods')}
             />
             <SidebarLink
               label="QR Codes"
-              icon="📱"
+              icon={<Smartphone className="w-5 h-5" />}
               active={tab === 'qrcodes'}
               onClick={() => setTab('qrcodes')}
             />
@@ -363,7 +369,7 @@ export default function SuperAdminPage() {
               onClick={logout}
               className="flex w-full items-center gap-4 rounded-full px-5 py-3 text-base font-semibold text-emerald-50 hover:bg-emerald-700/80"
             >
-              <span className="text-xl">⏻</span>
+              <LogOut className="w-5 h-5" />
               <span>Logout</span>
             </button>
           </div>
@@ -452,7 +458,7 @@ export default function SuperAdminPage() {
 
 type SidebarLinkProps = {
   label: string;
-  icon: string;
+  icon: React.ReactNode;
   active: boolean;
   onClick: () => void;
 };
@@ -465,7 +471,7 @@ function SidebarLink({ label, icon, active, onClick }: SidebarLinkProps) {
       className={`flex w-full items-center gap-4 rounded-full px-5 py-3 ${active ? 'bg-emerald-600 text-white' : 'text-emerald-50 hover:bg-emerald-700/80'
         }`}
     >
-      <span className="text-2xl">{icon}</span>
+      {icon}
       <span className="text-base font-semibold">{label}</span>
     </button>
   );
