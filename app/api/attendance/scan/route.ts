@@ -4,6 +4,7 @@ import { attendance, qrCodes, timePeriods, users } from '@/lib/db/schema';
 import { generateId, formatDate, formatTime, parseTime } from '@/lib/utils';
 import { verifyToken } from '@/lib/auth';
 import { eq, and } from 'drizzle-orm';
+import { isWithinGeofence, isGeofencingEnabled } from '@/lib/geofence';
 
 export async function POST(request: NextRequest) {
   try {
@@ -38,8 +39,21 @@ export async function POST(request: NextRequest) {
       locationStatus = 'in_review';
       finalStatus = 'in_review';
     } else {
-      // Location is precise
-      locationStatus = 'verified';
+      // Location is precise - now check geofence
+      if (isGeofencingEnabled()) {
+        const geofenceCheck = isWithinGeofence(latitude, longitude);
+        if (!geofenceCheck.isWithin) {
+          // Outside geofence - send for manual verification
+          locationStatus = 'in_review';
+          finalStatus = 'in_review';
+        } else {
+          // Inside geofence - location verified
+          locationStatus = 'verified';
+        }
+      } else {
+        // Geofencing disabled - just verify accuracy
+        locationStatus = 'verified';
+      }
     }
 
     // Find the QR code
@@ -79,7 +93,7 @@ export async function POST(request: NextRequest) {
       .limit(1);
 
     if (existing.length > 0) {
-      return NextResponse.json({ 
+      return NextResponse.json({
         error: 'Already scanned for this period today',
         attendance: existing[0]
       }, { status: 400 });
@@ -93,7 +107,7 @@ export async function POST(request: NextRequest) {
       const startMinutes = startTime.hours * 60 + startTime.minutes;
       const endMinutes = endTime.hours * 60 + endTime.minutes;
       const lateThreshold = startMinutes + periodRecord.lateThreshold;
-      
+
       // Grace period: allow 5 minutes before start and 10 minutes after end
       const GRACE_PERIOD_BEFORE = 5; // minutes before period starts
       const GRACE_PERIOD_AFTER = 10; // minutes after period ends
