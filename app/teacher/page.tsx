@@ -267,7 +267,7 @@ export default function TeacherPage() {
         <aside className="flex w-72 flex-col bg-emerald-800/95 px-6 py-8 text-emerald-50">
           <div className="mb-10 flex items-center gap-4">
             <Image
-              src="/Logo.png"
+              src="/green Logo.png"
               alt="Juanttendify Logo"
               width={56}
               height={56}
@@ -289,12 +289,6 @@ export default function TeacherPage() {
               icon={<ClipboardList className="w-5 h-5" />}
               active={tab === 'attendance'}
               onClick={() => setTab('attendance')}
-            />
-            <SidebarLink
-              label="Reports"
-              icon={<BarChart3 className="w-5 h-5" />}
-              active={tab === 'reports'}
-              onClick={() => setTab('reports')}
             />
             <SidebarLink
               label="QR Code Generator"
@@ -368,10 +362,6 @@ export default function TeacherPage() {
                 setSearch={setSearch}
                 onVerify={verifyAttendance}
               />
-            )}
-
-            {tab === 'reports' && (
-              <ReportsTab summary={summary} selectedDate={selectedDate} />
             )}
 
             {tab === 'qr' && (
@@ -467,7 +457,7 @@ function DashboardTab({
 
         {/* Attendance summary */}
         <div className="flex flex-col rounded-3xl bg-emerald-700/95 p-8 text-white shadow-lg">
-          <h3 className="mb-6 text-base font-semibold tracking-[0.15em]">
+          <h3 className="mb-3 text-base font-semibold tracking-[0.15em]">
             ATTENDANCE SUMMARY
           </h3>
           <div className="flex flex-1 items-end gap-2">
@@ -607,15 +597,11 @@ function AttendanceTab({
           </select>
         </div>
 
-        <div className="relative">
-          <button
-            type="button"
-            className="flex items-center gap-3 rounded-full bg-white px-5 py-3 text-sm font-semibold text-emerald-800 shadow-sm"
-          >
-            <span>Filter</span>
-          </button>
-          {/* Simple status filter pills */}
-          <div className="mt-3 flex flex-wrap gap-3 text-sm">
+        <div className="flex items-center gap-3">
+          <span className="text-base font-medium text-emerald-900">
+            Filter:
+          </span>
+          <div className="flex flex-wrap gap-3 text-sm">
             {['all', 'present', 'absent', 'late', 'in_review'].map((status) => (
               <button
                 key={status}
@@ -623,14 +609,14 @@ function AttendanceTab({
                 onClick={() =>
                   setFilterStatus(status as 'all' | 'present' | 'absent' | 'late' | 'in_review')
                 }
-                className={`rounded-full px-3 py-1 font-semibold ${filterStatus === status
-                  ? 'bg-emerald-700 text-white'
-                  : 'bg-emerald-50 text-emerald-800'
+                className={`rounded-full px-4 py-2 font-semibold transition-all ${filterStatus === status
+                  ? 'bg-emerald-700 text-white shadow-md'
+                  : 'bg-white text-emerald-800 border border-emerald-100 hover:bg-emerald-50'
                   }`}
               >
                 {status === 'all'
                   ? 'Default'
-                  : status.charAt(0).toUpperCase() + status.slice(1)}
+                  : status === 'in_review' ? 'In Review' : status.charAt(0).toUpperCase() + status.slice(1)}
               </button>
             ))}
           </div>
@@ -946,7 +932,14 @@ function QrTab({
 
               <button
                 type="button"
-                className="flex-1 rounded-full bg-emerald-800 px-6 py-4 text-sm font-extrabold tracking-wide text-white shadow-sm hover:bg-emerald-900"
+                onClick={() => {
+                  // Stop session logic: simply clear the QR code
+                  if (typeof window !== 'undefined') {
+                    // We can't really "stop" the server-side TTL, but we can hide it from view
+                    window.location.reload(); // Simple way to reset states
+                  }
+                }}
+                className="flex-1 rounded-full bg-red-600 px-6 py-4 text-sm font-extrabold tracking-wide text-white shadow-sm hover:bg-red-700 transition-colors"
               >
                 Stop Session
               </button>

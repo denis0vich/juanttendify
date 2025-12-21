@@ -318,7 +318,7 @@ export default function SuperAdminPage() {
         <aside className="flex w-72 flex-col bg-emerald-800/95 px-6 py-8 text-emerald-50">
           <div className="mb-10 flex items-center gap-4">
             <Image
-              src="/Logo.png"
+              src="/green Logo.png"
               alt="Juanttendify Logo"
               width={56}
               height={56}

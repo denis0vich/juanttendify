@@ -30,9 +30,9 @@ export default function Home() {
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8 sm:py-5">
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-3">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-white shadow-sm">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-600 shadow-sm">
                   <Image
-                    src="/Logo.png"
+                    src="/green Logo.png"
                     alt="Juanttendify logo"
                     width={48}
                     height={48}
@@ -48,12 +48,12 @@ export default function Home() {
               <button
                 type="button"
                 aria-label="Open menu"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-sm hover:bg-emerald-700 transition-colors"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-transparent text-emerald-600 hover:bg-emerald-50 transition-colors"
               >
                 <span className="space-y-1.5">
-                  <span className="block h-1 w-5 bg-white" />
-                  <span className="block h-1 w-5 bg-white" />
-                  <span className="block h-1 w-5 bg-white" />
+                  <span className="block h-1 w-6 bg-emerald-600 rounded-full" />
+                  <span className="block h-1 w-6 bg-emerald-600 rounded-full" />
+                  <span className="block h-1 w-6 bg-emerald-600 rounded-full" />
                 </span>
               </button>
             </div>
@@ -111,7 +111,7 @@ export default function Home() {
               className="absolute inset-0"
               onClick={() => setActiveModal(null)}
             />
-            <div className="relative z-50 w-full max-w-lg rounded-[32px] bg-emerald-700/95 px-10 py-12 text-white shadow-2xl">
+            <div className="relative z-50 w-full max-w-md rounded-[32px] bg-emerald-700/95 px-10 py-10 text-white shadow-2xl">
               <button
                 type="button"
                 onClick={() => setActiveModal(null)}
@@ -192,7 +192,7 @@ function AuthLoginForm({ onSuccess }: AuthLoginFormProps) {
           htmlFor="login-email"
           className="mb-2 block text-base font-semibold text-emerald-50"
         >
-          E-mail / Phone Number
+          Email address
         </label>
         <input
           id="login-email"
@@ -327,7 +327,7 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
           htmlFor="reg-email"
           className="mb-2 block text-base font-semibold text-emerald-50"
         >
-          E-mail / Phone Number
+          Email address
         </label>
         <input
           id="reg-email"
@@ -343,8 +343,8 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
           type="button"
           onClick={() => setRole('student')}
           className={`rounded-full px-5 py-3 ${role === 'student'
-              ? 'bg-white text-emerald-800'
-              : 'bg-emerald-600 text-emerald-50'
+            ? 'bg-white text-emerald-800'
+            : 'bg-emerald-600 text-emerald-50'
             }`}
         >
           Student
@@ -353,8 +353,8 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
           type="button"
           onClick={() => setRole('teacher')}
           className={`rounded-full px-5 py-3 ${role === 'teacher'
-              ? 'bg-white text-emerald-800'
-              : 'bg-emerald-600 text-emerald-50'
+            ? 'bg-white text-emerald-800'
+            : 'bg-emerald-600 text-emerald-50'
             }`}
         >
           Teacher
