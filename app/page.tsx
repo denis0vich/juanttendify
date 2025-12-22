@@ -30,9 +30,9 @@ export default function Home() {
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8 sm:py-5">
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-3">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-600 shadow-sm">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-white shadow-sm">
                   <Image
-                    src="/green Logo.png"
+                    src="/Logo.png"
                     alt="Juanttendify logo"
                     width={48}
                     height={48}
@@ -48,12 +48,12 @@ export default function Home() {
               <button
                 type="button"
                 aria-label="Open menu"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-transparent text-emerald-600 hover:bg-emerald-50 transition-colors"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-sm hover:bg-emerald-700 transition-colors"
               >
                 <span className="space-y-1.5">
-                  <span className="block h-1 w-6 bg-emerald-600 rounded-full" />
-                  <span className="block h-1 w-6 bg-emerald-600 rounded-full" />
-                  <span className="block h-1 w-6 bg-emerald-600 rounded-full" />
+                  <span className="block h-1 w-5 bg-white" />
+                  <span className="block h-1 w-5 bg-white" />
+                  <span className="block h-1 w-5 bg-white" />
                 </span>
               </button>
             </div>

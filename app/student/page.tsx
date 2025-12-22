@@ -305,7 +305,7 @@ export default function StudentPage() {
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative bg-white/95 rounded-3xl shadow-2xl px-8 py-10 max-w-md w-full text-center z-10">
           <div className="flex justify-center mb-4">
-            <Image src="/green Logo.png" alt="Juanttendify Logo" width={120} height={120} className="object-contain" unoptimized />
+            <Image src="/Logo.png" alt="Juanttendify Logo" width={120} height={120} className="object-contain" unoptimized />
           </div>
           <h1 className="text-2xl font-extrabold text-emerald-800 mb-2">
             Student access only
@@ -369,7 +369,7 @@ export default function StudentPage() {
           {/* Top app bar */}
           <div className="flex items-center justify-between bg-emerald-700 px-4 py-3 text-white flex-shrink-0">
             <div className="flex items-center gap-2">
-              <Image src="/green Logo.png" alt="Logo" width={32} height={32} className="object-contain" unoptimized />
+              <Image src="/Logo.png" alt="Logo" width={32} height={32} className="object-contain" unoptimized />
               <span className="text-sm font-semibold">Juanttendify</span>
             </div>
             <div className="flex items-center gap-3 text-xs">

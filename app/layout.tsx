@@ -1,8 +1,5 @@
 import type { Metadata } from 'next';
-import { Outfit } from 'next/font/google';
 import './globals.css';
-
-const outfit = Outfit({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Juanttendify - School Attendance System',
@@ -16,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={outfit.className}>{children}</body>
+      <body style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -267,7 +267,7 @@ export default function TeacherPage() {
         <aside className="flex w-72 flex-col bg-emerald-800/95 px-6 py-8 text-emerald-50">
           <div className="mb-10 flex items-center gap-4">
             <Image
-              src="/green Logo.png"
+              src="/Logo.png"
               alt="Juanttendify Logo"
               width={56}
               height={56}
@@ -611,7 +611,7 @@ function AttendanceTab({
                 }
                 className={`rounded-full px-4 py-2 font-semibold transition-all ${filterStatus === status
                   ? 'bg-emerald-700 text-white shadow-md'
-                  : 'bg-white text-emerald-800 border border-emerald-100 hover:bg-emerald-50'
+                  : 'bg-emerald-50 text-emerald-800'
                   }`}
               >
                 {status === 'all'
