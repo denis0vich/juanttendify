@@ -483,7 +483,7 @@ function DashboardTab({ stats }: { stats: any }) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <h2 className="text-3xl font-extrabold text-emerald-900">System Statistics</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard label="Total Users" value={stats.totalUsers} color="emerald" />
@@ -512,7 +512,7 @@ function StatCard({ label, value, color }: { label: string; value: number; color
   };
 
   return (
-    <div className={`${colors[color]} rounded-3xl p-7 text-white shadow-lg`}>
+    <div className={` ${colors[color]} rounded-3xl p-5 text-white shadow-lg`}>
       <p className="text-sm font-semibold uppercase tracking-[0.18em]">{label}</p>
       <p className="text-4xl font-extrabold mt-3">{value || 0}</p>
     </div>

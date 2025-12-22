@@ -423,15 +423,15 @@ function DashboardTab({
   onNavigateToAttendance,
 }: DashboardTabProps) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-4">
       <h2 className="text-3xl font-extrabold text-emerald-900">
         Ma&apos;am Francine&apos;s Dashboard
       </h2>
 
-      <div className="grid gap-6 md:grid-cols-[1.4fr_1fr]">
+      <div className="grid gap-4 md:grid-cols-[1.4fr_1fr]">
         {/* Subject classes */}
-        <div className="rounded-3xl bg-emerald-700/95 p-8 text-white shadow-lg">
-          <h3 className="mb-6 text-base font-semibold tracking-[0.15em]">
+        <div className="rounded-3xl bg-emerald-700/95 p-5 text-white shadow-lg">
+          <h3 className="mb-4 text-base font-semibold tracking-[0.15em]">
             SUBJECT CLASSES
           </h3>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -456,8 +456,8 @@ function DashboardTab({
         </div>
 
         {/* Attendance summary */}
-        <div className="flex flex-col rounded-3xl bg-emerald-700/95 p-8 text-white shadow-lg">
-          <h3 className="mb-3 text-base font-semibold tracking-[0.15em]">
+        <div className="flex flex-col rounded-3xl bg-emerald-700/95 p-5 text-white shadow-lg">
+          <h3 className="mb-1 text-base font-semibold tracking-[0.15em]">
             ATTENDANCE SUMMARY
           </h3>
           <div className="flex flex-1 items-end gap-2">
@@ -492,7 +492,7 @@ function DashboardTab({
             })}
           </div>
 
-          <div className="mt-6 flex items-center justify-between text-sm text-emerald-100">
+          <div className="mt-4 flex items-center justify-between text-sm text-emerald-100">
             <div>
               <p>Total students scanned</p>
               <p className="text-2xl font-bold">{summary.total}</p>
