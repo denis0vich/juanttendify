@@ -111,7 +111,7 @@ export default function Home() {
               className="absolute inset-0"
               onClick={() => setActiveModal(null)}
             />
-            <div className="relative z-50 w-full max-w-md rounded-[32px] bg-emerald-700/95 px-10 py-10 text-white shadow-2xl">
+            <div className="relative z-50 w-full max-w-sm rounded-[32px] bg-emerald-700/95 px-8 py-8 text-white shadow-2xl">
               <button
                 type="button"
                 onClick={() => setActiveModal(null)}
@@ -182,15 +182,15 @@ function AuthLoginForm({ onSuccess }: AuthLoginFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="mb-6 text-center text-3xl font-extrabold tracking-wide">
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <h2 className="mb-4 text-center text-2xl font-extrabold tracking-wide">
         LOG IN
       </h2>
 
       <div>
         <label
           htmlFor="login-email"
-          className="mb-2 block text-base font-semibold text-emerald-50"
+          className="mb-1 block text-sm font-semibold text-emerald-50"
         >
           Email address
         </label>
@@ -199,14 +199,14 @@ function AuthLoginForm({ onSuccess }: AuthLoginFormProps) {
           name="email"
           type="email"
           required
-          className="w-full rounded-full border-none bg-white px-6 py-4 text-base font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
+          className="w-full rounded-full border-none bg-white px-5 py-3 text-sm font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
         />
       </div>
 
       <div>
         <label
           htmlFor="login-password"
-          className="mb-2 block text-base font-semibold text-emerald-50"
+          className="mb-1 block text-sm font-semibold text-emerald-50"
         >
           Password
         </label>
@@ -215,9 +215,9 @@ function AuthLoginForm({ onSuccess }: AuthLoginFormProps) {
           name="password"
           type="password"
           required
-          className="w-full rounded-full border-none bg-white px-6 py-4 text-base font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
+          className="w-full rounded-full border-none bg-white px-5 py-3 text-sm font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
         />
-        <div className="mt-3 text-right text-sm text-emerald-50/80">
+        <div className="mt-2 text-right text-xs text-emerald-50/80">
           Forgot Password?
         </div>
       </div>
@@ -231,7 +231,7 @@ function AuthLoginForm({ onSuccess }: AuthLoginFormProps) {
       <button
         type="submit"
         disabled={loading}
-        className="mt-3 w-full rounded-full bg-white px-10 py-4 text-base font-extrabold tracking-wide text-emerald-800 shadow-sm transition-colors hover:bg-emerald-100 disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-2 w-full rounded-full bg-white px-8 py-3 text-sm font-extrabold tracking-wide text-emerald-800 shadow-sm transition-colors hover:bg-emerald-100 disabled:cursor-not-allowed disabled:opacity-70"
       >
         {loading ? 'Logging in…' : 'LOG IN'}
       </button>
@@ -302,15 +302,15 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="mb-6 text-center text-3xl font-extrabold tracking-wide">
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <h2 className="mb-4 text-center text-2xl font-extrabold tracking-wide">
         REGISTER
       </h2>
 
       <div>
         <label
           htmlFor="reg-name"
-          className="mb-2 block text-base font-semibold text-emerald-50"
+          className="mb-1 block text-sm font-semibold text-emerald-50"
         >
           Full Name
         </label>
@@ -318,14 +318,14 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
           id="reg-name"
           name="name"
           required
-          className="w-full rounded-full border-none bg-white px-6 py-4 text-base font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
+          className="w-full rounded-full border-none bg-white px-5 py-3 text-sm font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
         />
       </div>
 
       <div>
         <label
           htmlFor="reg-email"
-          className="mb-2 block text-base font-semibold text-emerald-50"
+          className="mb-1 block text-sm font-semibold text-emerald-50"
         >
           Email address
         </label>
@@ -334,15 +334,15 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
           name="email"
           type="email"
           required
-          className="w-full rounded-full border-none bg-white px-6 py-4 text-base font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
+          className="w-full rounded-full border-none bg-white px-5 py-3 text-sm font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4 text-sm font-semibold text-emerald-50">
+      <div className="grid grid-cols-2 gap-3 text-xs font-semibold text-emerald-50">
         <button
           type="button"
           onClick={() => setRole('student')}
-          className={`rounded-full px-5 py-3 ${role === 'student'
+          className={`rounded-full px-4 py-2 ${role === 'student'
             ? 'bg-white text-emerald-800'
             : 'bg-emerald-600 text-emerald-50'
             }`}
@@ -352,7 +352,7 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
         <button
           type="button"
           onClick={() => setRole('teacher')}
-          className={`rounded-full px-5 py-3 ${role === 'teacher'
+          className={`rounded-full px-4 py-2 ${role === 'teacher'
             ? 'bg-white text-emerald-800'
             : 'bg-emerald-600 text-emerald-50'
             }`}
@@ -365,7 +365,7 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
         <div>
           <label
             htmlFor="reg-student-id"
-            className="mb-2 block text-base font-semibold text-emerald-50"
+            className="mb-1 block text-sm font-semibold text-emerald-50"
           >
             Student ID
           </label>
@@ -373,7 +373,7 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
             id="reg-student-id"
             name="studentId"
             required
-            className="w-full rounded-full border-none bg-white px-6 py-4 text-base font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
+            className="w-full rounded-full border-none bg-white px-5 py-3 text-sm font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
           />
         </div>
       )}
@@ -381,7 +381,7 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
       <div>
         <label
           htmlFor="reg-password"
-          className="mb-2 block text-base font-semibold text-emerald-50"
+          className="mb-1 block text-sm font-semibold text-emerald-50"
         >
           Password
         </label>
@@ -390,14 +390,14 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
           name="password"
           type="password"
           required
-          className="w-full rounded-full border-none bg-white px-6 py-4 text-base font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
+          className="w-full rounded-full border-none bg-white px-5 py-3 text-sm font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
         />
       </div>
 
       <div>
         <label
           htmlFor="reg-confirm"
-          className="mb-2 block text-base font-semibold text-emerald-50"
+          className="mb-1 block text-sm font-semibold text-emerald-50"
         >
           Confirm Password
         </label>
@@ -406,7 +406,7 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
           name="confirm"
           type="password"
           required
-          className="w-full rounded-full border-none bg-white px-6 py-4 text-base font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
+          className="w-full rounded-full border-none bg-white px-5 py-3 text-sm font-medium text-emerald-900 shadow-sm outline-none ring-0 focus:ring-2 focus:ring-emerald-400"
         />
       </div>
 
@@ -419,7 +419,7 @@ function AuthRegisterForm({ onSuccess }: AuthRegisterFormProps) {
       <button
         type="submit"
         disabled={loading}
-        className="mt-3 w-full rounded-full bg-white px-10 py-4 text-base font-extrabold tracking-wide text-emerald-800 shadow-sm transition-colors hover:bg-emerald-100 disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-2 w-full rounded-full bg-white px-8 py-3 text-sm font-extrabold tracking-wide text-emerald-800 shadow-sm transition-colors hover:bg-emerald-100 disabled:cursor-not-allowed disabled:opacity-70"
       >
         {loading ? 'Registering…' : 'REGISTER'}
       </button>
